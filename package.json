@@ -1,0 +1,30 @@
+{
+  "name": "blog1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "encore dev"
+  },
+  "keywords": [],
+  "author": "itsuki",
+  "license": "ISC",
+  "description": "premier_blog",
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^5.0.1",
+    "sass": "^1.82.0",
+    "sass-loader": "^16.0.1",
+    "webpack-notifier": "^1.15.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
