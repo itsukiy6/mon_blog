@@ -8,7 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "encore dev"
+    "dev": "encore dev",
+    "watch": "encore dev --watch"
   },
   "keywords": [],
   "author": "itsuki",
@@ -25,6 +26,7 @@
     "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "core-js": "^3.39.0"
   }
 }
