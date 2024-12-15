@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "encore dev",
-    "watch": "encore dev --watch"
+    "watch": "encore dev --watch",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "itsuki",

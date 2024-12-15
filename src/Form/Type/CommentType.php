@@ -37,6 +37,7 @@ class CommentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Commentaire::class,
+            'csrf_token_id' => 'comment-add',
         ]);
     }
 }

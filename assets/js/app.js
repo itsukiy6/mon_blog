@@ -1,5 +1,4 @@
-import '../css/app.scss';
-import {Dropdown} from "bootstrap";
+
 
 document.addEventListener( 'DOMContentLoaded',  () => {
     new App();
@@ -7,39 +6,56 @@ document.addEventListener( 'DOMContentLoaded',  () => {
 
 class App {
     constructor() {
-        this.enableDropdowns();
+
         this.handleCommentForm();
+
     }
 
-    enableDropdowns() {
-        const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
-        dropdownElementList.map(function (dropdownToggleEl) {
-            return new Dropdown(dropdownToggleEl)
-        });
-    }
 
-    handleCommentForm(){
+
+
+    handleCommentForm()
+    {
         const commentForm = document.querySelector('form.comment-form');
 
-        if (null == document.querySelector('form.comment-form')){
+        console.log(commentForm);
+
+        if (null == commentForm) {
             return;
         }
-        commentForm.addEventListener('submit', async (e) => {
 
+
+
+        commentForm.addEventListener('submit', async(e) => {
             e.preventDefault();
 
+            if (null == commentForm) {
+                console.warn('Formulaire non trouvé.');
+                return;
+            }
             const response = await fetch('/ajax/comments', {
                 method: 'POST',
                 body: new FormData(e.target)
             })
 
-            if (!response.ok){
+            if (!response.ok) {
                 return;
             }
 
             const json = await response.json();
 
-            console.log(json);
+            if (json.code === 'COMMENT_ADDED_SUCCESSFULLY') {
+                const commentList = document.querySelector('.comment-list');
+                const commentCount = document.querySelector('.comment-count');
+                const commentContenu = document.querySelector('.comment-contenu');
+
+                commentList.insertAdjacentHTML('beforeend', json.message);
+                commentList.lastElementChild.scrollIntoView();
+
+                commentCount.innerText = json.numberOfComments;
+
+                commentContenu.value = '';
+            }
         });
     }
 }
